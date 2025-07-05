@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="/assets/styles.css">
+  <title>Music Player</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      padding: 20px; 
+      margin: 0; 
+      padding-bottom: 60px; /* Space for the fixed player */
+    }
+    #playlist { 
+      list-style: none; 
+      padding: 0; 
+    }
+    #playlist li { 
+      cursor: pointer; 
+      padding: 5px; 
+    }
+    #playlist li:hover { 
+      background: #333;
+       
+    }
+    #playlist li.playing { 
+      font-weight: bold; 
+      color: rgb(65, 255, 48); 
+    }
+    #audioContainer {
+      position: fixed; 
+      bottom: 0; 
+      left: 0; 
+      right: 0; 
+      background: #333; /* Background color for the player */
+      padding: 10px; 
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    }
+  </style>
+</head>
+<body>
+  <h1>Technical Know <br><b>Music Player</b></h1>
+  <ul id="playlist">
+    <li data-src="https://fine.sunproxy.net/file/WjNNYlpROXU0aEloVDU5bU5MNFp1S1loMzRPN3VteDFHOW9XZzBuUmxYcHl1UGE3ZlFSUGRvNGt3eVBMUXlGWmw1TkRDRlVKNFRqeWpHT051WndOUmJQa0NGRitZZmNDZDlucHRzRG5ZRzg9/Johnny_Mercer_and_the_Pied_Pipers_-_On_the_Atchison_Topeka_And_Santa_Fe_(Hydr0.org).mp3">Johnny Mercer Pied Pipers - On the Atchison Topeka And Santa Fe </li>
+    <li data-src="https://fine.sunproxy.net/file/WjNNYlpROXU0aEloVDU5bU5MNFp1S1loMzRPN3VteDFHOW9XZzBuUmxYcG1kUVljRVRHeG1uREovYVFaUGNhMDdNUGphVFA2RGgrK0kzRUZVeWNEU0FQZUR4MmdXMEZHSkNzVkkzRzkvZ0E9/Tiny_Tim_-_Tip_Toe_Thru_the_Tulips_with_Me_(Hydr0.org).mp3">
+Tiny Tim - Tulips with Me </li>
+    <li data-src="https://fine.sunproxy.net/file/WjNNYlpROXU0aEloVDU5bU5MNFp1S1loMzRPN3VteDFHOW9XZzBuUmxYcHl1UGE3ZlFSUGRvNGt3eVBMUXlGWkhLdExFUTdnMnh6R1N2RGZ3NElLUGNZcEJzbHplV2hQWEEwbjVoN1JSTVE9/Engelbert_Humperdinck_-_A_Man_Without_Love_(Hydr0.org).mp3">Engelbert Humperdinck - A Man Without Love</li>
+    <li data-src="https://fine.sunproxy.net/file/WjNNYlpROXU0aEloVDU5bU5MNFp1S1loMzRPN3VteDFHOW9XZzBuUmxYcjllVFIzeU5zZDh1YTJLVUFlVmhnTi9acVpQcDVqc21URURtRDhHd3psNXpuRjVSNmZtWjdsckFyZ0I0aHArZFk9/The_Weeknd_Playboi_Carti_-_Timeless_(Hydr0.org).mp3">The Weeknd & Playboi Carti - Timeless </li>
+  </ul>
+
+  <div id="audioContainer">
+    <audio id="audioPlayer" controls>
+      <source id="audioSource" src="" type="audio/mpeg">
+      Your browser doesn't support audio element.
+    </audio>
+  </div>
+
+  <script>
+    const audio = document.getElementById('audioPlayer');
+    const source = document.getElementById('audioSource');
+    const playlist = document.getElementById('playlist');
+    let current;
+
+    playlist.addEventListener('click', function(e) {
+      if (e.target && e.target.nodeName === 'LI') {
+        const src = e.target.getAttribute('data-src');
+        if (src) {
+          source.src = src;
+          audio.load();
+          audio.play();
+          // update UI
+          if (current) current.classList.remove('playing');
+          e.target.classList.add('playing');
+          current = e.target;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
