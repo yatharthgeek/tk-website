@@ -11,6 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/markdown-it@12.0.4/dist/markdown-it.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js"></script>
     <script src="blog.js"></script>
+    <link rel="stylesheet" href="filter.css">
+    <script src="filter.js"></script>
 
 </head>
 <body>
@@ -26,10 +28,11 @@
         <section class="intro">
              <h3>intrests</h3>
             <ul>
-                <li><a href="#section1">AI</a></li>
-                <li><a href="#section2">linux</a></li>
-                <li><a href="#section3">programming</a></li>
-                <li><a href="#section4">tech news</a></li>
+                <li><a href="#" class="filter-link" data-filter="AI">AI</a></li>
+                <li><a href="#" class="filter-link" data-filter="Linux">linux</a></li>
+                <li><a href="#" class="filter-link" data-filter="Programming">programming</a></li>
+                <li><a href="#" class="filter-link" data-filter="Tech News">tech news</a></li>
+                <li><a href="#" class="filter-link" data-filter="All">all</a></li>
 
             </ul>
         </section>
@@ -38,26 +41,17 @@
         <section class="content">
             <div id="links">
                 <ol>
-                    <li class="gap"> [04.07.25] - 
-                        <a href="#" onclick="loadMarkdown('content/md/04.07.25.md')">UNDERSTANDING AI AND ITS CONS</a>
+                    <li class="gap" data-keywords="Linux"> [06.07.25] - 
+                        <a href="#" onclick="loadMarkdown('/blog/content/md/06.07.25.md')">MASTERING LINUX IN JUST 24 HOURS</a>
                     </li>
-                    <li class="gap"> [04.07.25] - 
-                        <a href="#" onclick="loadMarkdown('content/md/04.07.25.md')">LINUX CHANGED MY LIFE</a>
+                    <li class="gap" data-keywords="AI"> [04.07.25] - 
+                        <a href="#" onclick="loadMarkdown('/blog/content/md/04.07.25.md')">UNDERSTANDING AI AND ITS CONS</a>
                     </li>
-                    <li class="gap"> [04.07.25] - 
-                        <a href="#" onclick="loadMarkdown('content/md/04.07.25.md')">ITS NOT ABOUT PROGRAMMING</a>
+                    <li class="gap" data-keywords="Programming"> [04.07.25] - 
+                        <a href="#" onclick="loadMarkdown('/blog/content/md/04.07.25.md')">ITS NOT ABOUT PROGRAMMING</a>
                     </li>
-                    <li class="gap"> [04.07.25] - 
-                        <a href="#" onclick="loadMarkdown('content/md/04.07.25.md')">WHAT BIGGER COMPANIES DONT WANT YOU TO KNOW</a>
-                    </li>
-                    <li class="gap"> [04.07.25] - 
-                        <a href="#" onclick="loadMarkdown('content/md/04.07.25.md')">HOW THE INTERNET WORKS</a>
-                    </li>
-                    <li class="gap"> [04.07.25] - 
-                        <a href="#" onclick="loadMarkdown('content/md/04.07.25.md')">LEARNING TO PLAY ANYTHING</a>
-                    </li>
-                    <li class="gap"> [04.07.25] - 
-                        <a href="#" onclick="loadMarkdown('content/md/04.07.25.md')">HUMAN VS AI</a>
+                    <li class="gap" data-keywords="Tech News"> [04.07.25] - 
+                        <a href="#" onclick="loadMarkdown('/blog/content/md/04.07.25.md')">WHAT BIGGER COMPANIES DONT WANT YOU TO KNOW</a>
                     </li>
                 </ol>
                 
@@ -77,9 +71,6 @@
             </ul>
         </aside>
     </main>
-
-    <script>
-    </script>
 
     <footer>
         <p>&copy; 2025 technical know. all rights reserved.</p>
