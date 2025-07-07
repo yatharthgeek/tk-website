@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            margin: 0; 
+            padding-bottom: 60px; /* Space for the fixed player */
+        }
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .video {
+            margin: 10px;
+            cursor: pointer;
+            width: 300px;
+            height: 200px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .video img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Technical Know <br><b>Videos</b></h1>
+<div class="video-container">
+    <div class="video" onclick="playVideo('pqrLxWnmpFM')">
+        <img src="https://i.ytimg.com/vi/pqrLxWnmpFM/hqdefault.jpg" alt="Video 1" height="171" width="305">
+    </div>
+    <div class="video" onclick="playVideo('sScq5p-tNII')">
+        <img src="https://i.ytimg.com/vi/sScq5p-tNII/hqdefault.jpg" alt="Video 2" height="171" width="305">
+    </div>
+</div>
+<div id="videoPlayer" style="display:none;">
+    <iframe id="player" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+    <button id="back-button" onclick="closePlayer()"> << back </button>
+</div>
+
+<script>
+    function playVideo(videoId) {
+        const player = document.getElementById('player');
+        player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        document.getElementById('videoPlayer').style.display = 'block';
+    }
+
+    function closePlayer() {
+        const player = document.getElementById('player');
+        player.src = '';
+        document.getElementById('videoPlayer').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

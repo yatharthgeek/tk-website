@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="/assets/styles.css">
+  <title>Podcast</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      padding: 20px; 
+      margin: 0; 
+      padding-bottom: 60px; /* Space for the fixed player */
+    }
+    #playlist { 
+      list-style: none; 
+      padding: 0; 
+    }
+    #playlist li { 
+      cursor: pointer; 
+      padding: 5px; 
+    }
+    #playlist li:hover { 
+      background: #333;
+       
+    }
+    #playlist li.playing { 
+      font-weight: bold; 
+      color: rgb(65, 255, 48); 
+    }
+    #audioContainer {
+      position: fixed; 
+      bottom: 0; 
+      left: 0; 
+      right: 0; 
+      background: #333; /* Background color for the player */
+      padding: 10px; 
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    }
+  </style>
+</head>
+<body>
+  <h1>Technical Know <br><b>Podcast</b></h1>
+  <ul id="playlist">
+    <h3>linux for hackers - <b>occupy the web</b></h3>
+    <li data-src="">introduction</li>
+  </ul>
+
+  <div id="audioContainer">
+    <audio id="audioPlayer" controls>
+      <source id="audioSource" src="" type="audio/wav">
+      Your browser doesn't support audio element.
+    </audio>
+  </div>
+
+  <script>
+    const audio = document.getElementById('audioPlayer');
+    const source = document.getElementById('audioSource');
+    const playlist = document.getElementById('playlist');
+    let current;
+
+    playlist.addEventListener('click', function(e) {
+      if (e.target && e.target.nodeName === 'LI') {
+        const src = e.target.getAttribute('data-src');
+        if (src) {
+          source.src = src;
+          audio.load();
+          audio.play();
+          // update UI
+          if (current) current.classList.remove('playing');
+          e.target.classList.add('playing');
+          current = e.target;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
